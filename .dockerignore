@@ -10,7 +10,6 @@
 !/some-directory/**
 
 # Ignore specific files or directories
-Dockerfile
 .dockerignore
 .git
 .gitignore

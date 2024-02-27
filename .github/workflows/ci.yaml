@@ -25,17 +25,17 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Check out code
+      - name: check out code
         uses: actions/checkout@v2
-      - name: Update Image Tag Values
+      - name: update image tag value
         run: |
           chart_dir="golang-chart"
           new_image_tag=${{ github.sha }}
 
-          # Update the values.yaml file with the new image tag
+          # update the values.yaml file with the new image tag
           sed -i "s/^  tag: .*/  tag: $new_image_tag/" "$chart_dir/values.yaml"
 
-      - name: Commit the changes made
+      - name: commit the changes made
         run: |
           git config --global user.name "Alejandro Flores"
           git config --global user.email "aleksgnu@gmail.com"
