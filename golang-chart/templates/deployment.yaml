@@ -10,7 +10,7 @@ spec:
   {{- end }}
   selector:
     matchLabels:
-      {{- include "golang-chart.selectorLabels" . | nindent 6 }}
+      app: {{ include "golang-chart.fullname" . }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -31,7 +31,7 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
-        - name: {{ .Chart.Name }}
+        - name: {{ include "golang-chart.fullname" . }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
