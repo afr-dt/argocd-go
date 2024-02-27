@@ -1,0 +1,19 @@
+# Ignore everything
+**
+
+# Allow specific directories and files
+!main.go
+!go.mod
+!go.sum
+
+# Allow all subdirectories under a specific directory
+!/some-directory/**
+
+# Ignore specific files or directories
+Dockerfile
+.dockerignore
+.git
+.gitignore
+README.md
+*.md
+.vscode
