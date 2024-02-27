@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN CGO_ENABLED=0 GOOS=linux go build -o server
+RUN go build -o server
 
 FROM alpine:latest
 
