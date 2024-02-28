@@ -8,9 +8,8 @@ spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
-  selector:
-    matchLabels:
-      app: {{ include "golang-chart.fullname" . }}
+  selector:  
+    app: {{ include "golang-chart.fullname" . }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
