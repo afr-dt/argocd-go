@@ -9,7 +9,7 @@ spec:
   source:
     path: golang-chart
     repoURL: "https://github.com/afr-dt/argocd-go"
-    targetRevision: HEAD
+    targetRevision: main
     helm:
       valueFiles:
         - values.yaml
