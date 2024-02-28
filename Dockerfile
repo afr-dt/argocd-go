@@ -1,13 +1,15 @@
-FROM golang:1.22.0-alpine3.19 as builder
+# Multi-stage build for the builder stage
+FROM --platform=$BUILDPLATFORM golang:1.22.0-alpine3.19 as builder
 
 WORKDIR /app
 
 COPY . .
 
 RUN go mod download
-RUN go build -o server
+RUN GOARCH=arm go build -o server
 
-FROM alpine:3.19
+# Final stage
+FROM --platform=$BUILDPLATFORM arm32v6/alpine:3.19
 
 WORKDIR /app
 
