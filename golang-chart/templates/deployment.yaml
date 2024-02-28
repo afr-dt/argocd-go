@@ -9,7 +9,8 @@ spec:
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:  
-    app: {{ include "golang-chart.fullname" . }}
+    matchLabels:
+      app: {{ include "golang-chart.fullname" . }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -17,10 +18,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "golang-chart.labels" . | nindent 8 }}
-        {{- with .Values.podLabels }}
-        {{- toYaml . | nindent 8 }}
-        {{- end }}
+        app: {{ include "golang-chart.fullname" . }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -30,7 +28,7 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
-        - name: {{ include "golang-chart.fullname" . }}
+        - name: app: {{ include "golang-chart.fullname" . }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
