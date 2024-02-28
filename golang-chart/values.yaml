@@ -8,7 +8,7 @@ image:
   repository: initafr/golang-app
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 86c1dc19bca962acc7395272d0793231115a03d8
+  tag: 97fe1389d8c265efc67af945c37a1121eeb94c7e
 
 imagePullSecrets: []
 nameOverride: ""
